@@ -34,3 +34,5 @@ Os botões de reservar abrem um pop-up que monta a mensagem e abre o WhatsApp da
 
 Os arquivos ficam na raiz do domínio. O `.htaccess` força HTTPS e aplica os cabeçalhos
 de segurança (CSP liberando só o Google Fonts).
+
+Site publicado em https://kdsczstudios-lgtm.github.io/soul-gastrobar/
