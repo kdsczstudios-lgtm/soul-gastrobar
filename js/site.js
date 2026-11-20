@@ -60,7 +60,7 @@
       li.appendChild(el("h3", null, String(s.atracao || "Show ao vivo").slice(0, 80)));
       li.appendChild(el("p", "show-info", (s.estilo ? String(s.estilo).slice(0, 100) + ". " : "") + "Às " + horaBR(s.hora) + "."));
       var ingresso = linkSeguro(s.ingresso);
-      var a = el("a", "botao botao-contorno show-acao", ingresso ? "Comprar ingresso" : "Reservar para este show");
+      var a = el("a", "botao botao-contorno show-acao", ingresso ? "Comprar ingresso" : "Reservar");
       if (ingresso) { a.href = ingresso; a.target = "_blank"; a.rel = "noopener noreferrer"; }
       else {
         a.href = "#reservar";
@@ -71,7 +71,7 @@
     });
     if (shows.length && shows.length < 3) {
       var mais = el("li", "show show-mais");
-      var pm = el("p", "show-info", "Os próximos shows são anunciados toda semana no Instagram ");
+      var pm = el("p", "show-info", "Próximos shows no Instagram ");
       var ig = el("a", null, "@soul.gastrobar"); ig.href = "https://www.instagram.com/soul.gastrobar/"; ig.target = "_blank"; ig.rel = "noopener noreferrer";
       pm.appendChild(ig); pm.appendChild(document.createTextNode("."));
       mais.appendChild(pm); lista.appendChild(mais);

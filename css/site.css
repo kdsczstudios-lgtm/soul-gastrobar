@@ -136,26 +136,46 @@ p { margin: 0; }
 .secao-topo p { color: var(--fumaca); font-size: var(--t-1); line-height: 1.5; }
 .nota { margin-top: 2rem; color: var(--fumaca); max-width: 65ch; }
 
-/* Agenda */
-.agenda { list-style: none; margin: 0; padding: 0; display: grid; gap: 1px; background: var(--madeira); border-block: 1px solid var(--madeira); }
+/* Agenda: faixa logo abaixo do palco, como a borda de madeira do palco */
+.faixa-agenda {
+  background:
+    repeating-linear-gradient(90deg, transparent 0 158px, rgba(0, 0, 0, .22) 158px 160px),
+    linear-gradient(180deg, #4e3829, #3a2a1f);
+  border-bottom: 1px solid #241a13;
+}
+.faixa-dentro {
+  max-width: var(--largura); margin: 0 auto;
+  padding: 1.1rem var(--lateral);
+  display: flex; align-items: center; gap: 1rem 2rem;
+}
+.faixa-agenda h2 { font-size: var(--t-1); font-weight: 800; flex: none; }
+.agenda {
+  list-style: none; margin: 0; padding: 0 0 .2rem;
+  display: flex; gap: .8rem; flex: 1;
+  overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: thin;
+}
 .show {
-  display: grid; gap: .4rem 1.6rem; align-items: center;
-  grid-template-columns: 4.5rem 1fr;
-  padding: 1.4rem 0; background: var(--palco);
+  flex: 0 0 auto; scroll-snap-align: start;
+  display: grid; grid-template-columns: auto auto; grid-template-rows: auto auto; align-items: center; gap: .1rem 1rem;
+  padding: .7rem 1rem; min-width: 17rem;
+  background: rgba(27, 22, 19, .72); border: 1px solid rgba(243, 234, 220, .12); border-radius: 14px;
 }
-.show-data { grid-row: span 2; line-height: 1; }
-.show-data time { display: grid; justify-items: start; }
-.show-dia { font: 800 var(--t-5)/1 var(--f-display); color: var(--luz); font-variant-numeric: tabular-nums; }
-.show-semana { color: var(--fumaca); font-weight: 500; margin-top: .3rem; }
-.show h3 { font-size: var(--t-2); }
-.show-info { color: var(--fumaca); }
-.show-acao { grid-column: 2; justify-self: start; margin-top: .5rem; }
-@media (min-width: 760px) {
-  .show { grid-template-columns: 7rem 1fr auto; padding: 1.6rem 0; }
-  .show-acao { grid-column: 3; grid-row: 1 / span 2; margin: 0; }
+.show-data { grid-row: span 2; margin: 0; line-height: 1; }
+.show-data time { display: grid; justify-items: center; }
+.show-dia { font: 800 var(--t-3)/1 var(--f-display); color: var(--luz); font-variant-numeric: tabular-nums; }
+.show-semana { color: var(--fumaca); font-size: .8rem; margin-top: .2rem; }
+.show h3 { font-size: var(--t-1); line-height: 1.2; }
+.show-info { color: var(--fumaca); font-size: .92rem; }
+.show-acao {
+  grid-column: 3; grid-row: 1 / span 2;
+  min-height: 2.5rem; padding: .5rem 1rem; font-size: .9rem; margin-left: .4rem;
 }
-
-.show-mais { grid-template-columns: 1fr; }
+.show { grid-template-columns: auto 1fr auto; }
+@media (max-width: 640px) {
+  .faixa-dentro { flex-direction: column; align-items: stretch; gap: .7rem; }
+  .show { min-width: 85%; }
+}
+.show-mais { display: flex; align-items: center; min-width: 14rem; max-width: 20rem; }
 
 /* Drinks */
 .campeao {
