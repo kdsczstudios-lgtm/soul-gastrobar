@@ -232,6 +232,23 @@
     </ul>
   </footer>
 
+  <dialog class="modal modal-banda" id="modal-banda" aria-labelledby="banda-nome">
+    <div class="banda-foto" id="banda-foto" hidden></div>
+    <div class="modal-caixa">
+      <div class="modal-topo">
+        <p class="banda-quando" id="banda-quando"></p>
+        <button class="modal-fechar" type="button" id="banda-fechar" aria-label="Fechar">Fechar</button>
+      </div>
+      <h2 class="banda-nome" id="banda-nome"></h2>
+      <p class="modal-texto" id="banda-estilo"></p>
+      <p class="banda-sobre" id="banda-sobre" hidden></p>
+      <div class="banda-botoes">
+        <a class="botao" href="#reservar" id="banda-reservar">Reservar mesa para este show</a>
+        <a class="botao botao-contorno" id="banda-ingresso" href="#" target="_blank" rel="noopener noreferrer" hidden>Comprar ingresso</a>
+      </div>
+    </div>
+  </dialog>
+
   <dialog class="modal" id="modal-reserva" aria-labelledby="titulo-modal">
     <div class="modal-caixa">
       <div class="modal-topo">

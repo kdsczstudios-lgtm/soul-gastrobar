@@ -43,40 +43,62 @@
     .sort(function (a, b) { return a._d - b._d || a.hora.localeCompare(b.hora); })
     .slice(0, 3);
 
+  // Faixa da agenda: só a data e o nome; o clique abre o pop-up da banda
   if (lista) {
     if (!shows.length) {
-      var vazio = el("li", "show");
-      vazio.appendChild(el("p", "show-info", "A próxima agenda sai em breve. Acompanhe no Instagram @soul.gastrobar."));
-      lista.appendChild(vazio);
+      lista.appendChild(el("li", "show-vazio", "Nova agenda em breve."));
     }
     shows.forEach(function (s) {
-      var li = el("li", "show");
-      var data = el("p", "show-data");
-      var t = el("time"); t.dateTime = s.data + "T" + s.hora;
-      t.appendChild(el("span", "show-dia", String(s._d.getDate()).padStart(2, "0")));
-      t.appendChild(el("span", "show-semana", SEMANA[s._d.getDay()] + ", " + MESES[s._d.getMonth()]));
-      data.appendChild(t);
-      li.appendChild(data);
-      li.appendChild(el("h3", null, String(s.atracao || "Show ao vivo").slice(0, 80)));
-      li.appendChild(el("p", "show-info", (s.estilo ? String(s.estilo).slice(0, 100) + ". " : "") + "Às " + horaBR(s.hora) + "."));
-      var ingresso = linkSeguro(s.ingresso);
-      var a = el("a", "botao botao-contorno show-acao", ingresso ? "Comprar ingresso" : "Reservar");
-      if (ingresso) { a.href = ingresso; a.target = "_blank"; a.rel = "noopener noreferrer"; }
-      else {
-        a.href = "#reservar";
-        a.addEventListener("click", function () { preencherMotivo(s.atracao + ", " + SEMANA[s._d.getDay()] + " " + dataBR(s.data)); });
-      }
-      li.appendChild(a);
+      var li = el("li");
+      var bt = el("button", "show-chip"); bt.type = "button";
+      var t = el("time", "chip-data", dataBR(s.data) + " " + SEMANA[s._d.getDay()].slice(0, 3)); t.dateTime = s.data + "T" + s.hora;
+      bt.appendChild(t);
+      bt.appendChild(el("span", "chip-nome", String(s.atracao || "Show ao vivo").slice(0, 60)));
+      bt.setAttribute("aria-label", "Ver show: " + s.atracao + ", " + SEMANA[s._d.getDay()] + " " + dataBR(s.data));
+      bt.addEventListener("click", function () { abrirBanda(s, bt); });
+      li.appendChild(bt);
       lista.appendChild(li);
     });
-    if (shows.length && shows.length < 3) {
-      var mais = el("li", "show show-mais");
-      var pm = el("p", "show-info", "Próximos shows no Instagram ");
-      var ig = el("a", null, "@soul.gastrobar"); ig.href = "https://www.instagram.com/soul.gastrobar/"; ig.target = "_blank"; ig.rel = "noopener noreferrer";
-      pm.appendChild(ig); pm.appendChild(document.createTextNode("."));
-      mais.appendChild(pm); lista.appendChild(mais);
-    }
   }
+
+  // Pop-up da banda
+  var modalBanda = document.getElementById("modal-banda");
+  var bandaAtual = null, bandaOrigem = null;
+  function abrirBanda(s, origem) {
+    if (!modalBanda || typeof modalBanda.showModal !== "function") { preencherMotivo(s.atracao + ", " + SEMANA[s._d.getDay()] + " " + dataBR(s.data)); location.hash = "reservar"; return; }
+    bandaAtual = s; bandaOrigem = origem || null;
+    var dia = SEMANA[s._d.getDay()];
+    document.getElementById("banda-quando").textContent = dia.charAt(0).toUpperCase() + dia.slice(1) + ", " + dataBR(s.data) + " às " + horaBR(s.hora);
+    document.getElementById("banda-nome").textContent = String(s.atracao || "Show ao vivo").slice(0, 80);
+    document.getElementById("banda-estilo").textContent = s.estilo ? String(s.estilo).slice(0, 100) + (s.sobre ? "" : ".") : "";
+    var sobre = document.getElementById("banda-sobre");
+    sobre.textContent = s.sobre ? String(s.sobre).slice(0, 600) : ""; sobre.hidden = !s.sobre;
+    var fotoBox = document.getElementById("banda-foto");
+    fotoBox.textContent = "";
+    var foto = arquivoLocal(s.foto);
+    if (foto) {
+      var im = document.createElement("img"); im.alt = "Foto da banda " + s.atracao; im.src = foto;
+      im.addEventListener("error", function () { fotoBox.hidden = true; });
+      fotoBox.appendChild(im); fotoBox.hidden = false;
+    } else fotoBox.hidden = true;
+    var ing = linkSeguro(s.ingresso), aIng = document.getElementById("banda-ingresso");
+    aIng.hidden = !ing; if (ing) aIng.href = ing;
+    modalBanda.showModal();
+    document.body.classList.add("modal-aberto");
+  }
+  if (modalBanda) {
+    modalBanda.addEventListener("close", function () {
+      document.body.classList.remove("modal-aberto");
+      if (bandaOrigem && bandaOrigem.focus && !(modal && modal.open)) bandaOrigem.focus();
+    });
+    modalBanda.addEventListener("click", function (e) { if (e.target === modalBanda) modalBanda.close(); });
+    document.getElementById("banda-fechar").addEventListener("click", function () { modalBanda.close(); });
+    document.getElementById("banda-reservar").addEventListener("click", function () {
+      if (bandaAtual) preencherMotivo(bandaAtual.atracao + ", " + SEMANA[bandaAtual._d.getDay()] + " " + dataBR(bandaAtual.data));
+      modalBanda.close();
+    });
+  }
+
   // Palco: foto ou vídeo da banda do próximo show, com o nome dela
   var palco = document.getElementById("inicio");
   var midia = document.getElementById("palco-midia");
@@ -155,7 +177,7 @@
     var a = e.target.closest ? e.target.closest('a[href="#reservar"]') : null;
     if (!a || !modal || typeof modal.showModal !== "function") return;
     e.preventDefault();
-    if (!a.hasAttribute("data-evento") && !a.classList.contains("show-acao") && a.id !== "palco-reservar" && campoMotivo) campoMotivo.value = "";
+    if (!a.hasAttribute("data-evento") && a.id !== "banda-reservar" && a.id !== "palco-reservar" && campoMotivo) campoMotivo.value = "";
     abrirReserva(a);
   });
 
