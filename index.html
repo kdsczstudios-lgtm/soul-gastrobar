@@ -8,47 +8,57 @@
   <link rel="icon" href="img/logo-soul.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;700;800&amp;family=Instrument+Sans:wght@400;500;600&amp;display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;800&amp;family=Instrument+Serif:ital@0;1&amp;family=Instrument+Sans:wght@400;500;600&amp;display=swap">
   <link rel="stylesheet" href="css/site.css">
 </head>
 <body>
   <a class="pular" href="#conteudo">Pular para o conteúdo</a>
 
   <header class="topo">
-    <a class="marca" href="#inicio" aria-label="Soul Gastrobar, início">
+    <button class="topo-menu" type="button" id="menu-botao" aria-controls="menu-tela" aria-expanded="false">Menu</button>
+    <a class="topo-marca" href="#inicio" aria-label="Soul Gastrobar, início">
       <img src="img/logo-soul.svg" alt="" width="44" height="44">
     </a>
-    <button class="menu-botao" type="button" id="menu-botao" aria-expanded="false" aria-controls="menu">Menu</button>
-    <nav aria-label="Principal" id="menu">
+    <a class="topo-reservar" href="#reservar">Reservar</a>
+  </header>
+
+  <dialog class="menu-tela" id="menu-tela" aria-label="Menu">
+    <div class="menu-tela-topo">
+      <button class="topo-menu" type="button" id="menu-fechar">Fechar</button>
+    </div>
+    <nav aria-label="Principal">
       <ul>
         <li><a href="#agenda">Agenda</a></li>
-        <li><a href="#drinks">Drinks</a></li>
-        <li><a href="#cozinha">Cozinha</a></li>
-        <li><a href="#eventos">Eventos</a></li>
-        <li><a href="#chegar">Como chegar</a></li>
-        <li><a class="nav-reservar" href="#reservar">Reservar mesa</a></li>
+        <li><a href="#cartas">Drinks e cozinha</a></li>
+        <li><a href="#noite">Uma noite no Soul</a></li>
+        <li><a href="#eventos">Aniversários e eventos</a></li>
+        <li><a href="#info">Como chegar</a></li>
+        <li><a href="#reservar">Reservar mesa</a></li>
       </ul>
     </nav>
-  </header>
+    <p class="menu-tela-rodape">Av. Independência, 427, Taubaté. <a href="https://www.instagram.com/soul.gastrobar/" target="_blank" rel="noopener noreferrer">@soul.gastrobar</a></p>
+  </dialog>
 
   <main id="conteudo">
 
+    <!-- Topo: a banda do próximo show, em tela cheia -->
     <section id="inicio" class="palco" aria-labelledby="titulo-principal">
       <div class="palco-midia" id="palco-midia" aria-hidden="true"></div>
       <div class="palco-luz" aria-hidden="true"></div>
       <div class="palco-cena">
         <div class="palco-marca"><svg class="lettering-soul" viewBox="-7.5 -7.5 588.0 115.0" role="img" aria-label="Soul" xmlns="http://www.w3.org/2000/svg"><g fill="none" stroke="currentColor" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"><path transform="translate(0 0)" d="M133 0H25A25 25 0 0 0 25 50H108A25 25 0 0 1 108 100H0"/><path transform="translate(167 0)" d="M25 0H95A25 25 0 0 1 120 25V75A25 25 0 0 1 95 100H25A25 25 0 0 1 0 75V25A25 25 0 0 1 25 0Z"/><path transform="translate(321 0)" d="M0 0V75A25 25 0 0 0 25 100H93A25 25 0 0 0 118 75V0"/><path transform="translate(473 0)" d="M0 0V75A25 25 0 0 0 25 100H100"/></g></svg><svg class="lettering-gastrobar" viewBox="-7.5 -7.5 1336.0 115.0" role="img" aria-label="Gastrobar" xmlns="http://www.w3.org/2000/svg"><g fill="none" stroke="currentColor" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"><path transform="translate(0 0)" d="M120 0H25A25 25 0 0 0 0 25V75A25 25 0 0 0 25 100H95A25 25 0 0 0 120 75V52H66"/><path transform="translate(154 0)" d="M0 100V25A25 25 0 0 1 25 0H93A25 25 0 0 1 118 25V100M0 56H118"/><path transform="translate(306 0)" d="M133 0H25A25 25 0 0 0 25 50H108A25 25 0 0 1 108 100H0"/><path transform="translate(473 0)" d="M0 0H104M52.0 0V100"/><path transform="translate(611 0)" d="M0 100V0H87A25 25 0 0 1 87 50H0M87 50A25 25 0 0 1 112 75V100"/><path transform="translate(757 0)" d="M25 0H95A25 25 0 0 1 120 25V75A25 25 0 0 1 95 100H25A25 25 0 0 1 0 75V25A25 25 0 0 1 25 0Z"/><path transform="translate(911 0)" d="M0 0H87A25 25 0 0 1 87 50H0M87 50A25 25 0 0 1 87 100H0V0"/><path transform="translate(1057 0)" d="M0 100V25A25 25 0 0 1 25 0H93A25 25 0 0 1 118 25V100M0 56H118"/><path transform="translate(1209 0)" d="M0 100V0H87A25 25 0 0 1 87 50H0M87 50A25 25 0 0 1 112 75V100"/></g></svg></div>
-        <p class="palco-quando" id="palco-quando">Ao vivo no palco do Soul</p>
-        <p class="palco-banda" id="palco-banda">Banda ao vivo</p>
-        <p class="palco-estilo" id="palco-estilo">Toda semana tem show.</p>
+        <p class="palco-banda" id="palco-banda">Som da Alma</p>
+        <p class="palco-quando" id="palco-quando">música ao vivo toda semana</p>
+        <p class="palco-estilo" id="palco-estilo"></p>
         <h1 id="titulo-principal">Bar de música com palco para banda, drinks autorais e cozinha de bar em Taubaté</h1>
         <p class="palco-botoes">
-          <a class="botao" id="palco-reservar" href="#reservar">Reservar mesa para este show</a>
-          <a class="botao botao-contorno" href="#agenda">Ver a agenda</a>
+          <a class="botao" id="palco-reservar" href="#reservar">Reservar mesa</a>
+          <a class="botao botao-linha" href="#cartas">Ver drinks</a>
         </p>
       </div>
     </section>
 
+    <!-- Faixa da agenda -->
     <section id="agenda" class="faixa-agenda" aria-labelledby="titulo-agenda">
       <div class="faixa-dentro">
         <h2 id="titulo-agenda">Agenda de shows</h2>
@@ -57,175 +67,175 @@
       </div>
     </section>
 
-    <section id="drinks" class="secao secao-drinks" aria-labelledby="titulo-drinks">
-      <div class="secao-topo">
-        <h2 id="titulo-drinks">Drinks</h2>
-        <p>Clássicos bem feitos e receitas da casa. Se não souber o que pedir, peça o Drink Coringa e deixe o barman escolher.</p>
-      </div>
-
-      <article id="drink-campeao" class="campeao" aria-labelledby="titulo-campeao">
-        <p class="campeao-premio">1º lugar no Festival Gastronômico Mazzaropi 2026</p>
-        <h3 id="titulo-campeao">Meu Porto, Minha Saudade</h3>
-        <p>Licor de cassis, grenadine, espumante e cachaça. Criado para o festival, inspirado no filme Portugal, Minha Saudade, de Mazzaropi.</p>
-        <p class="campeao-preco">R$ 38</p>
-      </article>
-
-      <div class="cartas">
-        <div class="carta">
-          <h3>Da casa</h3>
-          <ul class="menu-lista">
-            <li><p class="item"><span class="nome">Gin Soul</span><span class="preco">R$ 45</span></p><p class="desc">Gin, frutas vermelhas e água tônica.</p></li>
-            <li><p class="item"><span class="nome">Jorge Amado</span><span class="preco">R$ 42</span></p><p class="desc">Cachaça Gabriela, manjericão e maracujá.</p></li>
-            <li><p class="item"><span class="nome">Fitzgerald by Nunu</span><span class="preco">R$ 39</span></p><p class="desc">Gin, limão-siciliano, açúcar e bitter.</p></li>
-            <li><p class="item"><span class="nome">Doce Desejo</span><span class="preco">R$ 35</span></p><p class="desc">Maracujá, morango e cachaça de doce de leite.</p></li>
-            <li><p class="item"><span class="nome">Drink Coringa</span><span class="preco">R$ 42</span></p><p class="desc">Receita do barman ou um drink que não está no menu.</p></li>
-          </ul>
-        </div>
-        <div class="carta">
-          <h3>Spritz</h3>
-          <ul class="menu-lista">
-            <li><p class="item"><span class="nome">Aperol Spritz</span><span class="preco">R$ 42</span></p><p class="desc">Aperol, espumante, laranja e água com gás.</p></li>
-            <li><p class="item"><span class="nome">Campari Spritz</span><span class="preco">R$ 42</span></p><p class="desc">Campari, espumante, laranja e água com gás.</p></li>
-            <li><p class="item"><span class="nome">Limoncello Spritz</span><span class="preco">R$ 42</span></p><p class="desc">Limoncello, espumante, limão e água com gás.</p></li>
-          </ul>
-          <h3>Caipirinhas</h3>
-          <p class="desc">Limão, laranja, maracujá, abacaxi, morango ou frutas vermelhas.</p>
-          <ul class="menu-lista">
-            <li><p class="item"><span class="nome">Caipirinha de cachaça</span><span class="preco">R$ 34</span></p></li>
-            <li><p class="item"><span class="nome">Caipiroska de vodka</span><span class="preco">R$ 36</span></p></li>
-            <li><p class="item"><span class="nome">Saquerinha</span><span class="preco">R$ 32</span></p></li>
-          </ul>
-        </div>
-        <div class="carta">
-          <h3>Clássicos</h3>
-          <ul class="menu-lista">
-            <li><p class="item"><span class="nome">Negroni</span><span class="preco">R$ 42</span></p><p class="desc">Campari, gin, vermute tinto e laranja.</p></li>
-            <li><p class="item"><span class="nome">Moscow Mule</span><span class="preco">R$ 42</span></p><p class="desc">Vodka, limão, xarope e espuma de gengibre.</p></li>
-            <li><p class="item"><span class="nome">Margarita</span><span class="preco">R$ 46</span></p><p class="desc">Tequila, limão, licor de laranja e borda de sal.</p></li>
-            <li><p class="item"><span class="nome">Mojito</span><span class="preco">R$ 42</span></p><p class="desc">Rum, limão, hortelã, açúcar e água com gás.</p></li>
-            <li><p class="item"><span class="nome">Dry Martini 007</span><span class="preco">R$ 42</span></p><p class="desc">Gin, vermute dry e azeitonas.</p></li>
-            <li><p class="item"><span class="nome">Gin tônica</span><span class="preco">R$ 42</span></p><p class="desc">Gin, limão, gelo e água tônica.</p></li>
-          </ul>
-        </div>
-      </div>
-
-      <p class="nota">Também tem chopp Heineken e Brahma, cervejas especiais (Campos do Jordão, Roleta Russa, Trooper) e carta de vinhos da Argentina, Chile, Portugal, Itália, Espanha e Brasil. <a href="https://drive.google.com/file/d/1lx9g_3FPudKm_tkXEfUDPH6hRUmHb1Q0/view" target="_blank" rel="noopener noreferrer">Ver o cardápio completo em PDF</a></p>
+    <!-- Selos -->
+    <section class="selos" aria-label="Reconhecimentos">
+      <ul>
+        <li><p class="selo-grande">1º lugar</p><p>Festival Gastronômico Mazzaropi 2026, com o drink Meu Porto, Minha Saudade</p></li>
+        <li><p class="selo-grande">4,8 de 5</p><p>128 avaliações no Restaurant Guru</p></li>
+        <li><p class="selo-grande">Toda semana</p><p>banda ao vivo no palco do Soul</p></li>
+      </ul>
     </section>
 
-    <section id="cozinha" class="secao" aria-labelledby="titulo-cozinha">
-      <div class="secao-topo">
-        <h2 id="titulo-cozinha">Cozinha</h2>
-        <p>Petiscos para dividir na mesa durante o show, pratos e almoço de terça a domingo.</p>
+    <!-- Frase da casa, metade texto e metade foto -->
+    <section id="sobre" class="dividido" aria-labelledby="titulo-sobre">
+      <div class="dividido-texto">
+        <h2 id="titulo-sobre" class="frase">O Soul é o <strong>som da alma</strong> de Taubaté: <strong>palco para banda</strong>, drinks autorais e cozinha de bar.</h2>
+        <p>Em português, soul significa alma. Para nós, Soul significa o Som da Alma. Somos apaixonados por música, e foi ela que nos uniu para criar um lugar que junta pessoas que vibram na mesma frequência.</p>
+        <p class="citacao">“A vida é a arte do encontro.” <span>Vinicius de Moraes</span></p>
+        <a class="botao" href="#reservar">Reservar mesa</a>
       </div>
-      <div class="cozinha">
-        <figure class="cozinha-foto">
-          <div class="cozinha-quadro">
-            <img src="img/galeria/entrada-aperol.jpg" alt="Entrada da casa com tomate, palmito e azeitonas, ao lado de um Aperol Spritz" width="1159" height="1415" loading="lazy">
+      <figure class="dividido-foto">
+        <img src="img/galeria/drink-balcao.jpg" alt="Drink sendo servido no balcão do Soul" width="1159" height="1415" loading="lazy">
+      </figure>
+    </section>
+
+    <!-- Tabuleiro: foto e caixa emoldurada, alternando -->
+    <section class="tabuleiro" aria-label="O que tem no Soul">
+      <figure class="tab-foto"><img src="img/galeria/steak-tartare.jpg" alt="Steak tartare com Aperol Spritz sobre o jogo americano do Soul" width="1159" height="1417" loading="lazy"></figure>
+      <div class="tab-caixa">
+        <div class="moldura">
+          <h2>Drinks</h2>
+          <p>Clássicos bem feitos, receitas da casa e o drink campeão do Festival Mazzaropi.</p>
+          <a class="botao botao-linha" href="#cartas">Ver a carta</a>
+        </div>
+      </div>
+      <div class="tab-caixa">
+        <div class="moldura">
+          <h2>Cozinha</h2>
+          <p>Petiscos para dividir durante o show, pratos e almoço de terça a domingo.</p>
+          <a class="botao botao-linha" href="#cartas" data-aba="cozinha">Ver a cozinha</a>
+        </div>
+      </div>
+      <figure class="tab-foto"><img src="img/galeria/torresmo.jpg" alt="Torresmo de rolo com gin tônica" width="1159" height="1543" loading="lazy"></figure>
+      <figure class="tab-foto"><img src="img/galeria/bolovo-chopp.jpg" alt="Bolovo de carne de panela com chopp na taça do Soul" width="1159" height="1319" loading="lazy"></figure>
+      <div class="tab-caixa" id="eventos">
+        <div class="moldura">
+          <h2>Comemore</h2>
+          <p>Aniversários, confraternizações e festas fechadas com banda ao vivo. Diga a data e quantas pessoas.</p>
+          <a class="botao botao-linha" href="#reservar" data-evento="Orçamento de evento ou aniversário">Pedir orçamento</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cartas: drinks e cozinha -->
+    <section id="cartas" class="cartas" aria-labelledby="titulo-cartas">
+      <div class="cartas-topo">
+        <h2 id="titulo-cartas">A carta</h2>
+        <div class="abas" role="tablist" aria-label="Escolha a carta">
+          <button type="button" role="tab" id="aba-drinks" aria-controls="painel-drinks" aria-selected="true">Drinks</button>
+          <button type="button" role="tab" id="aba-cozinha" aria-controls="painel-cozinha" aria-selected="false">Cozinha</button>
+        </div>
+      </div>
+
+      <div class="painel" id="painel-drinks" role="tabpanel" aria-labelledby="aba-drinks">
+        <article class="campeao" aria-labelledby="titulo-campeao">
+          <p class="campeao-premio">1º lugar no Festival Gastronômico Mazzaropi 2026</p>
+          <h3 id="titulo-campeao">Meu Porto, Minha Saudade</h3>
+          <p>Licor de cassis, grenadine, espumante e cachaça. Inspirado no filme Portugal, Minha Saudade, de Mazzaropi.</p>
+          <p class="campeao-preco">R$ 38</p>
+        </article>
+        <div class="colunas">
+          <div class="coluna">
+            <h3>Da casa</h3>
+            <ul class="itens">
+              <li><p class="item"><span class="nome">Gin Soul</span><span class="preco">45</span></p><p class="desc">Gin, frutas vermelhas e água tônica.</p></li>
+              <li><p class="item"><span class="nome">Jorge Amado</span><span class="preco">42</span></p><p class="desc">Cachaça Gabriela, manjericão e maracujá.</p></li>
+              <li><p class="item"><span class="nome">Fitzgerald by Nunu</span><span class="preco">39</span></p><p class="desc">Gin, limão-siciliano, açúcar e bitter.</p></li>
+              <li><p class="item"><span class="nome">Doce Desejo</span><span class="preco">35</span></p><p class="desc">Maracujá, morango e cachaça de doce de leite.</p></li>
+              <li><p class="item"><span class="nome">Drink Coringa</span><span class="preco">42</span></p><p class="desc">Receita do barman ou um drink que não está no menu.</p></li>
+            </ul>
           </div>
-          <figcaption>Entrada da casa com Aperol Spritz</figcaption>
-        </figure>
-        <ul class="pratos">
-          <li><p class="item"><span class="nome">Torresmo de rolo</span><span class="preco">R$ 68</span></p><p class="desc">Pururucado, com vinagrete de maçã verde e pimenta da casa. 300 g.</p></li>
-          <li><p class="item"><span class="nome">Bolovo de carne de panela</span><span class="preco">R$ 32</span></p><p class="desc">Ovo de gema cremosa envolto em carne de panela, com maionese de picles e ervas.</p></li>
-          <li><p class="item"><span class="nome">Steak tartare</span><span class="preco">R$ 112</span></p><p class="desc">Filé mignon picado na faca, com dijon, picles e alcaparras. 150 g.</p></li>
-          <li><p class="item"><span class="nome">Croqueta de costela</span><span class="preco">R$ 52</span></p><p class="desc">Com gorgonzola e mostarda ancienne. Seis unidades.</p></li>
-          <li><p class="item"><span class="nome">Pastel da casa</span><span class="preco">a partir de R$ 53</span></p><p class="desc">Queijo da Alagoa com gorgonzola, ragu de carne ou camarão.</p></li>
-          <li><p class="item"><span class="nome">Filé mignon e gorgonzola</span><span class="preco">R$ 128</span></p><p class="desc">Tiras grelhadas com molho cremoso de gorgonzola. 350 g.</p></li>
-        </ul>
+          <div class="coluna">
+            <h3>Spritz</h3>
+            <ul class="itens">
+              <li><p class="item"><span class="nome">Aperol Spritz</span><span class="preco">42</span></p><p class="desc">Aperol, espumante, laranja e água com gás.</p></li>
+              <li><p class="item"><span class="nome">Campari Spritz</span><span class="preco">42</span></p><p class="desc">Campari, espumante, laranja e água com gás.</p></li>
+              <li><p class="item"><span class="nome">Limoncello Spritz</span><span class="preco">42</span></p><p class="desc">Limoncello, espumante, limão e água com gás.</p></li>
+            </ul>
+            <h3>Caipirinhas</h3>
+            <ul class="itens">
+              <li><p class="item"><span class="nome">Caipirinha</span><span class="preco">34</span></p><p class="desc">Limão, laranja, maracujá, abacaxi, morango ou frutas vermelhas.</p></li>
+              <li><p class="item"><span class="nome">Caipiroska</span><span class="preco">36</span></p></li>
+              <li><p class="item"><span class="nome">Saquerinha</span><span class="preco">32</span></p></li>
+            </ul>
+          </div>
+          <div class="coluna">
+            <h3>Clássicos</h3>
+            <ul class="itens">
+              <li><p class="item"><span class="nome">Negroni</span><span class="preco">42</span></p><p class="desc">Campari, gin, vermute tinto e laranja.</p></li>
+              <li><p class="item"><span class="nome">Moscow Mule</span><span class="preco">42</span></p><p class="desc">Vodka, limão, xarope e espuma de gengibre.</p></li>
+              <li><p class="item"><span class="nome">Margarita</span><span class="preco">46</span></p><p class="desc">Tequila, limão, licor de laranja e borda de sal.</p></li>
+              <li><p class="item"><span class="nome">Mojito</span><span class="preco">42</span></p><p class="desc">Rum, limão, hortelã, açúcar e água com gás.</p></li>
+              <li><p class="item"><span class="nome">Dry Martini 007</span><span class="preco">42</span></p><p class="desc">Gin, vermute dry e azeitonas.</p></li>
+              <li><p class="item"><span class="nome">Gin tônica</span><span class="preco">42</span></p><p class="desc">Gin, limão, gelo e água tônica.</p></li>
+            </ul>
+          </div>
+        </div>
+        <p class="nota">Também tem chopp Heineken e Brahma, cervejas especiais e carta de vinhos. Preços em reais.</p>
       </div>
-      <p class="nota"><a href="https://drive.google.com/file/d/1lx9g_3FPudKm_tkXEfUDPH6hRUmHb1Q0/view" target="_blank" rel="noopener noreferrer">Ver o cardápio completo em PDF</a></p>
+
+      <div class="painel" id="painel-cozinha" role="tabpanel" aria-labelledby="aba-cozinha">
+        <div class="colunas colunas-cozinha">
+          <div class="coluna">
+            <h3>Para dividir</h3>
+            <ul class="itens">
+              <li><p class="item"><span class="nome">Torresmo de rolo</span><span class="preco">68</span></p><p class="desc">Pururucado, com vinagrete de maçã verde e pimenta da casa. 300 g.</p></li>
+              <li><p class="item"><span class="nome">Bolovo de carne de panela</span><span class="preco">32</span></p><p class="desc">Gema cremosa e crosta crocante, com maionese de picles e ervas.</p></li>
+              <li><p class="item"><span class="nome">Croqueta de costela</span><span class="preco">52</span></p><p class="desc">Com gorgonzola e mostarda ancienne. Seis unidades.</p></li>
+              <li><p class="item"><span class="nome">Pastel da casa</span><span class="preco">53</span></p><p class="desc">Queijo da Alagoa com gorgonzola ou ragu de carne. Camarão, R$ 68.</p></li>
+            </ul>
+          </div>
+          <div class="coluna">
+            <h3>Entradas e pratos</h3>
+            <ul class="itens">
+              <li><p class="item"><span class="nome">Steak tartare</span><span class="preco">112</span></p><p class="desc">Filé mignon picado na faca, com dijon, picles e alcaparras. 150 g.</p></li>
+              <li><p class="item"><span class="nome">Burrata</span><span class="preco">79</span></p><p class="desc">Com gaspacho de tomate e pesto de manjericão.</p></li>
+              <li><p class="item"><span class="nome">Filé mignon e gorgonzola</span><span class="preco">128</span></p><p class="desc">Tiras grelhadas com molho cremoso de gorgonzola. 350 g.</p></li>
+              <li><p class="item"><span class="nome">Camarão na cachaça</span><span class="preco">122</span></p><p class="desc">Com molho de vinho branco e ervas, e pão tostado. 300 g.</p></li>
+            </ul>
+          </div>
+        </div>
+        <p class="nota">Almoço de terça a domingo, das 11h30 às 15h.</p>
+      </div>
+
+      <p class="cartas-pdf"><a href="https://drive.google.com/file/d/1lx9g_3FPudKm_tkXEfUDPH6hRUmHb1Q0/view" target="_blank" rel="noopener noreferrer">Ver o cardápio completo em PDF</a></p>
     </section>
 
-    <section id="galeria" class="secao" aria-labelledby="titulo-galeria">
-      <div class="secao-topo">
-        <h2 id="titulo-galeria">Uma noite no Soul</h2>
+    <!-- Uma noite no Soul: fotos passando em tela cheia -->
+    <section id="noite" class="noite" aria-labelledby="titulo-noite">
+      <div class="noite-fotos" id="lista-galeria" aria-hidden="true"></div>
+      <div class="noite-texto">
+        <h2 id="titulo-noite">Uma noite no Soul</h2>
         <p>O palco, o balcão e as mesas cheias numa noite de show.</p>
       </div>
-      <ul class="galeria" id="lista-galeria">
-        <li class="foto foto-grande vazia"><p>Banda no palco, vista do salão</p></li>
-        <li class="foto vazia"><p>Drink sendo servido no balcão</p></li>
-        <li class="foto vazia"><p>Steak tartare com Aperol Spritz</p></li>
-        <li class="foto vazia"><p>Torresmo de rolo com gin tônica</p></li>
-        <li class="foto vazia"><p>Bolovo com chopp</p></li>
-      </ul>
-      <p class="nota" id="galeria-nota">O quadro grande recebe a foto da banda no palco.</p>
     </section>
 
-    <section id="avaliacoes" class="secao secao-avaliacoes" aria-labelledby="titulo-avaliacoes">
-      <h2 id="titulo-avaliacoes">Quem vem, volta</h2>
-      <ul class="notas">
-        <li><p class="nota-valor">4,8</p><p>de 5 no Restaurant Guru, com 128 avaliações</p></li>
-        <li><p class="nota-valor">4,7</p><p>de 5 no Prime Gourmet, com 45 avaliações</p></li>
-      </ul>
-      <p class="avaliacoes-texto">Os elogios mais repetidos: a variedade de drinks, o chopp gelado, a música de bom gosto e o atendimento.</p>
-      <a class="botao botao-contorno" href="https://www.google.com/maps/search/?api=1&amp;query=Soul+Gastrobar+Taubat%C3%A9" target="_blank" rel="noopener noreferrer">Avaliar o Soul no Google</a>
-    </section>
-
-    <section id="eventos" class="secao secao-eventos" aria-labelledby="titulo-eventos">
-      <div class="secao-topo">
-        <h2 id="titulo-eventos">Aniversários e eventos</h2>
-        <p>Comemore com banda ao vivo: aniversários, confraternizações de empresa e festas fechadas. Diga a data e quantas pessoas, e a casa monta a proposta.</p>
+    <!-- Informações em colunas -->
+    <section id="info" class="info" aria-labelledby="titulo-info">
+      <h2 id="titulo-info" class="visualmente-oculto">Informações</h2>
+      <div class="info-col">
+        <h3>Endereço</h3>
+        <address>Av. Independência, 427<br>Vila Jaboticabeira<br>Taubaté/SP</address>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Soul+Gastrobar+Av.+Independ%C3%AAncia+427+Taubat%C3%A9" target="_blank" rel="noopener noreferrer">Abrir no mapa</a>
       </div>
-      <a class="botao" href="#reservar" data-evento="Orçamento de evento ou aniversário">Pedir orçamento de evento</a>
-    </section>
-
-    <section id="sobre" class="secao" aria-labelledby="titulo-sobre">
-      <div class="sobre">
-        <div>
-          <h2 id="titulo-sobre">O Som da Alma</h2>
-          <p>Em português, soul significa alma. Para nós, Soul significa o Som da Alma. Somos apaixonados por música, e foi ela que nos uniu para criar um lugar que junta pessoas que vibram na mesma frequência.</p>
-          <blockquote>
-            <p>A vida é a arte do encontro.</p>
-            <footer>Vinicius de Moraes</footer>
-          </blockquote>
-        </div>
-        <div>
-          <h3>Para vir com quem você quiser</h3>
-          <ul class="facilidades">
-            <li>Mesas ao ar livre</li>
-            <li>Espaço kids</li>
-            <li>Pet friendly</li>
-            <li>Estacionamento grátis</li>
-            <li>Opções vegetarianas</li>
-            <li>Acessibilidade e wi-fi</li>
-          </ul>
-        </div>
+      <div class="info-col">
+        <h3>Horário</h3>
+        <p>Segunda: fechado<br>Terça: 11h30 às 15h<br>Quarta a sexta: 11h30 às 15h e 18h à 0h30<br>Sábado: 11h30 à 0h30<br>Domingo: 11h30 às 18h</p>
       </div>
-    </section>
-
-    <section id="reservar" class="secao secao-reservar" aria-labelledby="titulo-reservar">
-      <div class="secao-topo">
-        <h2 id="titulo-reservar">Reservar mesa</h2>
-        <p>Escolha o dia, o horário e quantas pessoas. A reserva é confirmada pelo WhatsApp da casa.</p>
+      <div class="info-col">
+        <h3>Contato</h3>
+        <p><a href="https://wa.me/5512991885259" target="_blank" rel="noopener noreferrer">(12) 99188-5259</a><br>soulgastrobar23@gmail.com<br><a href="https://www.instagram.com/soul.gastrobar/" target="_blank" rel="noopener noreferrer">@soul.gastrobar</a></p>
       </div>
-      <a class="botao" href="#reservar" data-abre-reserva>Reservar mesa</a>
-      <p class="nota">Prefere chamar direto? WhatsApp <a href="https://wa.me/5512991885259" target="_blank" rel="noopener noreferrer">(12) 99188-5259</a>.</p>
-    </section>
-
-    <section id="chegar" class="secao" aria-labelledby="titulo-chegar">
-      <div class="chegar">
-        <div>
-          <h2 id="titulo-chegar">Horários e como chegar</h2>
-          <address>Av. Independência, 427<br>Vila Jaboticabeira, Taubaté/SP<br>CEP 12031-001</address>
-          <p><a class="botao botao-contorno" href="https://www.google.com/maps/search/?api=1&amp;query=Soul+Gastrobar+Av.+Independ%C3%AAncia+427+Taubat%C3%A9" target="_blank" rel="noopener noreferrer">Abrir no Google Maps</a></p>
-        </div>
-        <table class="horarios">
-          <caption>Horário de funcionamento</caption>
-          <tbody>
-            <tr><th scope="row">Segunda</th><td>Fechado</td></tr>
-            <tr><th scope="row">Terça</th><td>11h30 às 15h</td></tr>
-            <tr><th scope="row">Quarta a sexta</th><td>11h30 às 15h e 18h às 0h30</td></tr>
-            <tr><th scope="row">Sábado</th><td>11h30 às 0h30</td></tr>
-            <tr><th scope="row">Domingo</th><td>11h30 às 18h</td></tr>
-          </tbody>
-        </table>
+      <div class="info-col" id="reservar">
+        <h3>Reservas</h3>
+        <p>Reserve sua mesa pelo WhatsApp da casa. Espaço kids, pet friendly e estacionamento grátis.</p>
+        <a class="botao" href="#reservar">Reservar mesa</a>
       </div>
     </section>
   </main>
 
   <footer class="rodape">
-    <img src="img/logo-soul.svg" alt="Logo do Soul Gastrobar" width="56" height="56">
-    <p>Soul Gastrobar, Av. Independência, 427, Taubaté/SP</p>
+    <div class="rodape-marca"><svg class="lettering-rodape" viewBox="-7.5 -7.5 588.0 115.0" role="img" aria-label="Soul Gastrobar" xmlns="http://www.w3.org/2000/svg"><g fill="none" stroke="currentColor" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"><path transform="translate(0 0)" d="M133 0H25A25 25 0 0 0 25 50H108A25 25 0 0 1 108 100H0"/><path transform="translate(167 0)" d="M25 0H95A25 25 0 0 1 120 25V75A25 25 0 0 1 95 100H25A25 25 0 0 1 0 75V25A25 25 0 0 1 25 0Z"/><path transform="translate(321 0)" d="M0 0V75A25 25 0 0 0 25 100H93A25 25 0 0 0 118 75V0"/><path transform="translate(473 0)" d="M0 0V75A25 25 0 0 0 25 100H100"/></g></svg></div>
     <ul>
       <li><a href="https://www.instagram.com/soul.gastrobar/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
       <li><a href="https://www.facebook.com/soulgastrobar/" target="_blank" rel="noopener noreferrer">Facebook</a></li>
@@ -246,7 +256,7 @@
       <p class="banda-sobre" id="banda-sobre" hidden></p>
       <div class="banda-botoes">
         <a class="botao" href="#reservar" id="banda-reservar">Reservar mesa para este show</a>
-        <a class="botao botao-contorno" id="banda-ingresso" href="#" target="_blank" rel="noopener noreferrer" hidden>Comprar ingresso</a>
+        <a class="botao botao-linha" id="banda-ingresso" href="#" target="_blank" rel="noopener noreferrer" hidden>Comprar ingresso</a>
       </div>
     </div>
   </dialog>
@@ -282,12 +292,10 @@
         <p class="erro campo-largo" id="r-erro" role="alert" hidden></p>
         <button class="botao campo-largo" type="submit">Montar minha reserva</button>
       </form>
-
       <div class="reserva-pronta" id="r-pronto" hidden>
         <p id="r-resumo"></p>
         <a class="botao" id="r-link" href="https://wa.me/5512991885259" target="_blank" rel="noopener noreferrer">Enviar reserva no WhatsApp</a>
       </div>
-
     </div>
   </dialog>
 

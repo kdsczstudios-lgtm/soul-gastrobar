@@ -22,8 +22,12 @@ window.SOUL_AGENDA = [
 
 ## Como trocar as fotos da galeria
 
-Também em `js/agenda.js`, na lista `SOUL_GALERIA`. Cada foto tem um `quadro` de 1 a 5;
-o quadro 1 é o grande, reservado para a banda no palco.
+Também em `js/agenda.js`, na lista `SOUL_GALERIA`. As fotos passam uma de cada vez, em tela cheia,
+na seção "Uma noite no Soul", na ordem do número `quadro`.
+
+## Foto do topo sem show marcado
+
+`SOUL_PALCO_PADRAO` define a foto (ou vídeo) do topo quando não há show na agenda.
 
 ## Reservas
 
