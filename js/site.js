@@ -139,7 +139,6 @@
     if (!q || !arquivoLocal(f.foto)) return;
     var im = document.createElement("img");
     im.alt = String(f.legenda || "Foto do Soul Gastrobar").slice(0, 120);
-    im.loading = "lazy";
     im.addEventListener("load", function () { q.classList.remove("vazia"); q.textContent = ""; q.appendChild(im); });
     im.src = f.foto;
     colocadas++;
