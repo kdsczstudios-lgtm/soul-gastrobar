@@ -199,6 +199,9 @@
     abrirReserva(a);
   });
 
+  // Vindo de outra página com #reservar no endereço: abre a reserva
+  if (location.hash === "#reservar") setTimeout(function () { abrirReserva(null); }, 300);
+
   // Reserva
   var campoData = $("r-data");
   if (campoData) {

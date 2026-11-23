@@ -190,7 +190,7 @@ body.modal-aberto { overflow: hidden; }
 .item .preco { order: 2; color: var(--cobre); font-variant-numeric: tabular-nums; }
 .desc { color: var(--fumaca); font-size: .95rem; margin-top: .2rem; max-width: 42ch; }
 .nota { color: var(--fumaca); margin-top: 2.2rem; }
-.cartas-pdf { margin-top: 1rem; }
+.cartas-pdf { margin-top: 2.4rem; }
 
 /* Uma noite no Soul: fotos se alternando em tela cheia */
 .noite { position: relative; overflow: hidden; isolation: isolate; min-height: 80svh; display: grid; align-items: end; }
@@ -216,6 +216,29 @@ body.modal-aberto { overflow: hidden; }
 .rodape-marca { width: 9rem; color: var(--creme); }
 .rodape ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem 1.6rem; }
 @media (min-width: 860px) { .rodape { padding-bottom: 3rem; } }
+
+/* Página do cardápio */
+.topo.topo-solido { background: rgba(15, 12, 10, .96); border-bottom: 1px solid var(--linha); animation: none; }
+.cardapio-topo { display: grid; justify-items: center; gap: 1rem; text-align: center; padding: 8.5rem var(--lateral) 2.5rem; }
+.cardapio-marca { display: flex; align-items: center; gap: .8rem; color: var(--creme); }
+.cardapio-marca .lettering-soul { width: 5.5rem; }
+.cardapio-marca .lettering-gastrobar { width: 8rem; }
+.cardapio-marca .lettering-gastrobar g { stroke-width: 17; }
+.cardapio-topo h1 { font: 800 clamp(3.6rem, 12vw, 7rem)/.9 var(--f-titulo); text-transform: uppercase; }
+.cardapio-topo p { color: var(--fumaca); max-width: 46ch; }
+.cardapio-nav { position: sticky; top: 4.25rem; z-index: 10; background: rgba(15, 12, 10, .96); border-block: 1px solid var(--linha); }
+.cardapio-nav ul { list-style: none; margin: 0 auto; padding: 0 var(--lateral); max-width: var(--largura); display: flex; gap: 1.6rem; overflow-x: auto; scrollbar-width: none; }
+.cardapio-nav ul::-webkit-scrollbar { display: none; }
+.cardapio-nav a { display: block; padding: .85rem 0; white-space: nowrap; text-decoration: none; font: 700 1rem/1 var(--f-titulo); letter-spacing: .14em; text-transform: uppercase; color: var(--fumaca); border-bottom: 2px solid transparent; }
+.cardapio-nav a:hover, .cardapio-nav a:focus-visible { color: var(--creme); border-bottom-color: var(--cobre); }
+.pagina-cardapio { scroll-padding-top: 8rem; }
+html:has(.pagina-cardapio) { scroll-padding-top: 7.5rem; }
+.cardapio-secao { max-width: var(--largura); margin: 0 auto; padding: clamp(3rem, 7vw, 4.5rem) var(--lateral) 0; }
+.cardapio-secao h2 { display: flex; align-items: center; gap: 1.2rem; margin-bottom: 2rem; font: 800 clamp(2.2rem, 5vw, 3.4rem)/1 var(--f-titulo); text-transform: uppercase; }
+.cardapio-secao h2::after { content: ""; flex: 1; height: 1px; background: var(--linha); }
+.cardapio-secao .coluna:only-child .itens { grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr)); gap: 1.1rem 3.5rem; }
+.cardapio-fim { max-width: var(--largura); margin: 0 auto; padding: 4rem var(--lateral) 3rem; display: grid; justify-items: center; gap: 1.4rem; text-align: center; color: var(--fumaca); }
+.cardapio-botoes { display: flex; flex-wrap: wrap; justify-content: center; gap: .8rem; }
 
 /* Página de texto (privacidade) */
 .pagina-texto { max-width: 44rem; margin: 0 auto; padding: 8rem var(--lateral) 4rem; display: grid; gap: 1.2rem; }
