@@ -242,16 +242,58 @@ body.modal-aberto { overflow: hidden; }
 .banda-nome { font: 800 clamp(2.4rem, 8vw, 3.4rem)/.92 var(--f-titulo); text-transform: uppercase; }
 .banda-sobre { line-height: 1.55; }
 .banda-botoes { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: .4rem; }
-.reserva { display: grid; gap: 1rem 1.2rem; grid-template-columns: repeat(3, minmax(0, 1fr)); }
-.campo { display: grid; gap: .35rem; min-width: 0; }
+/* Pop-up de reserva: cartão com moldura dupla, campos com linha embaixo */
+.modal-reserva { width: min(30rem, calc(100% - 1.5rem)); background: var(--noite); border-color: var(--cobre); padding: clamp(.7rem, 2vw, .9rem); position: relative; }
+.modal-x {
+  position: absolute; top: 1.1rem; right: 1.1rem; z-index: 1; width: 2.5rem; height: 2.5rem; display: grid; place-items: center;
+  font: 300 1.9rem/1 var(--f-texto); color: var(--creme); background: none; border: 0; cursor: pointer;
+}
+.modal-x:hover { color: var(--cobre); }
+.reserva-moldura { border: 1px solid rgba(208, 145, 92, .55); padding: clamp(1.6rem, 5vw, 2.4rem) clamp(1.2rem, 5vw, 2.2rem); display: grid; gap: 1.6rem; }
+.reserva-topo { display: grid; justify-items: center; gap: .35rem; text-align: center; }
+.reserva-casa { font: 700 .85rem/1 var(--f-titulo); letter-spacing: .32em; text-transform: uppercase; color: var(--cobre); }
+.reserva-topo h2 { font: italic 400 clamp(2rem, 7vw, 2.5rem)/1.05 var(--f-frase); }
+.reserva-topo h2::after { content: ""; display: block; width: 2.5rem; height: 1px; background: var(--cobre); margin: .8rem auto 0; }
+.reserva-sub { color: var(--fumaca); font-size: .92rem; }
+.reserva { display: grid; gap: 1.3rem 1.4rem; grid-template-columns: 1fr 1fr; }
+.campo { display: grid; gap: .25rem; min-width: 0; }
 .campo-largo { grid-column: 1 / -1; }
-@media (max-width: 520px) { .reserva { grid-template-columns: 1fr 1fr; } .campo:nth-child(4) { grid-column: 1 / -1; } }
-label { font-weight: 600; font-size: .95rem; }
-input { font: 500 1rem var(--f-texto); color: var(--creme); background: var(--noite); border: 1px solid var(--linha); padding: .75rem .8rem; min-height: 3rem; width: 100%; min-width: 0; }
-input::placeholder { color: #85786a; }
-input:focus-visible { border-color: var(--cobre); }
-.erro { color: var(--cobre); font-weight: 600; }
-.reserva-pronta { display: grid; gap: 1rem; justify-items: start; padding: 1.2rem; background: var(--noite); border: 1px solid var(--linha); }
+.campo label { font: 700 .82rem/1 var(--f-titulo); letter-spacing: .2em; text-transform: uppercase; color: var(--cobre); }
+.campo label span { color: var(--fumaca); letter-spacing: .08em; font-weight: 500; text-transform: none; font-family: var(--f-texto); }
+.campo input, .campo select {
+  width: 100%; min-width: 0; min-height: 2.8rem; padding: .45rem 0;
+  font: 500 1.08rem/1.2 var(--f-texto); color: var(--creme); background: transparent;
+  border: 0; border-bottom: 1px solid var(--linha); border-radius: 0; appearance: none; -webkit-appearance: none;
+}
+.campo select {
+  cursor: pointer; padding-right: 1.4rem;
+  background: linear-gradient(45deg, transparent 50%, var(--cobre) 50%) right .35rem center / .4rem .4rem no-repeat,
+              linear-gradient(-45deg, transparent 50%, var(--cobre) 50%) right 0 center / .4rem .4rem no-repeat;
+}
+.campo select option { background: var(--carvao); color: var(--creme); }
+.campo input::placeholder { color: #7d7064; }
+.campo input:focus, .campo select:focus { outline: none; border-bottom-color: var(--cobre); }
+.campo input:focus-visible, .campo select:focus-visible { box-shadow: 0 1px 0 var(--cobre); }
+.campo input::-webkit-calendar-picker-indicator { filter: invert(.75) sepia(.6) saturate(3) hue-rotate(-10deg); cursor: pointer; }
+.contador { display: flex; align-items: center; gap: .4rem; border-bottom: 1px solid var(--linha); }
+.contador input { border: 0; text-align: center; font: 700 1.6rem/1 var(--f-titulo); -moz-appearance: textfield; }
+.contador input::-webkit-inner-spin-button, .contador input::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+.contador-bt {
+  flex: none; width: 2.6rem; height: 2.6rem; display: grid; place-items: center; cursor: pointer;
+  font: 400 1.5rem/1 var(--f-texto); color: var(--creme); background: none; border: 1px solid var(--linha); border-radius: 50%;
+}
+.contador-bt:hover { border-color: var(--cobre); color: var(--cobre); }
+.reserva .botao { margin-top: .4rem; }
+.erro { color: var(--cobre); font-weight: 600; font-size: .95rem; }
+.reserva-pronta { display: grid; gap: 1.1rem; }
+.pronta-titulo { font: 700 .85rem/1 var(--f-titulo); letter-spacing: .24em; text-transform: uppercase; color: var(--cobre); text-align: center; }
+.pronta-lista { margin: 0; display: grid; border-top: 1px solid var(--linha); }
+.pronta-lista div { display: flex; justify-content: space-between; gap: 1rem; padding: .7rem 0; border-bottom: 1px solid var(--linha); }
+.pronta-lista dt { color: var(--fumaca); }
+.pronta-lista dd { margin: 0; text-align: right; font-weight: 600; }
+.botao-whats { width: 100%; white-space: nowrap; letter-spacing: .1em; }
+.pronta-voltar { justify-self: center; font: 500 .95rem var(--f-texto); color: var(--fumaca); background: none; border: 0; text-decoration: underline; text-underline-offset: .2em; cursor: pointer; }
+.pronta-voltar:hover { color: var(--creme); }
 
 /* Botão de reserva fixo no celular */
 .reservar-fixo {

@@ -261,40 +261,72 @@
     </div>
   </dialog>
 
-  <dialog class="modal" id="modal-reserva" aria-labelledby="titulo-modal">
-    <div class="modal-caixa">
-      <div class="modal-topo">
-        <h2 id="titulo-modal">Reservar mesa</h2>
-        <button class="modal-fechar" type="button" id="modal-fechar" aria-label="Fechar">Fechar</button>
-      </div>
-      <p class="modal-texto">Preencha e envie pelo WhatsApp da casa. Nenhum dado fica salvo neste site.</p>
+  <dialog class="modal modal-reserva" id="modal-reserva" aria-labelledby="titulo-modal">
+    <button class="modal-x" type="button" id="modal-fechar" aria-label="Fechar">×</button>
+    <div class="reserva-moldura">
+      <header class="reserva-topo">
+        <p class="reserva-casa">Soul Gastrobar</p>
+        <h2 id="titulo-modal">Reserve sua mesa</h2>
+        <p class="reserva-sub">A casa confirma pelo WhatsApp.</p>
+      </header>
+
       <form id="form-reserva" class="reserva" novalidate>
         <div class="campo campo-largo">
           <label for="r-nome">Seu nome</label>
-          <input id="r-nome" name="nome" type="text" autocomplete="name" required maxlength="60">
+          <input id="r-nome" name="nome" type="text" autocomplete="name" required maxlength="60" placeholder="Como devemos chamar você">
         </div>
         <div class="campo">
-          <label for="r-data">Data</label>
+          <label for="r-data">Dia</label>
           <input id="r-data" name="data" type="date" required>
         </div>
         <div class="campo">
           <label for="r-hora">Horário</label>
-          <input id="r-hora" name="hora" type="time" required>
+          <select id="r-hora" name="hora" required>
+            <option value="">Escolha</option>
+              <option value="11:30">11h30</option>
+              <option value="12:00">12h</option>
+              <option value="12:30">12h30</option>
+              <option value="13:00">13h</option>
+              <option value="13:30">13h30</option>
+              <option value="14:00">14h</option>
+              <option value="14:30">14h30</option>
+              <option value="15:00">15h</option>
+              <option value="18:00">18h</option>
+              <option value="18:30">18h30</option>
+              <option value="19:00">19h</option>
+              <option value="19:30">19h30</option>
+              <option value="20:00">20h</option>
+              <option value="20:30">20h30</option>
+              <option value="21:00">21h</option>
+              <option value="21:30">21h30</option>
+              <option value="22:00">22h</option>
+              <option value="22:30">22h30</option>
+              <option value="23:00">23h</option>
+              <option value="23:30">23h30</option>
+              <option value="00:00">00h</option>
+          </select>
         </div>
-        <div class="campo">
+        <div class="campo campo-largo campo-pessoas">
           <label for="r-pessoas">Pessoas</label>
-          <input id="r-pessoas" name="pessoas" type="number" inputmode="numeric" min="1" max="60" required>
+          <div class="contador">
+            <button type="button" class="contador-bt" data-passo="-1" aria-label="Menos uma pessoa">−</button>
+            <input id="r-pessoas" name="pessoas" type="number" inputmode="numeric" min="1" max="60" value="2" required>
+            <button type="button" class="contador-bt" data-passo="1" aria-label="Mais uma pessoa">+</button>
+          </div>
         </div>
         <div class="campo campo-largo">
-          <label for="r-motivo">Show ou ocasião (opcional)</label>
-          <input id="r-motivo" name="motivo" type="text" maxlength="80" placeholder="Ex.: aniversário, show de sexta">
+          <label for="r-motivo">Show ou ocasião <span>(opcional)</span></label>
+          <input id="r-motivo" name="motivo" type="text" maxlength="80" placeholder="Aniversário, show de sexta…">
         </div>
         <p class="erro campo-largo" id="r-erro" role="alert" hidden></p>
-        <button class="botao campo-largo" type="submit">Montar minha reserva</button>
+        <button class="botao campo-largo" type="submit">Continuar</button>
       </form>
+
       <div class="reserva-pronta" id="r-pronto" hidden>
-        <p id="r-resumo"></p>
-        <a class="botao" id="r-link" href="https://wa.me/5512991885259" target="_blank" rel="noopener noreferrer">Enviar reserva no WhatsApp</a>
+        <p class="pronta-titulo">Confira sua reserva</p>
+        <dl class="pronta-lista" id="r-resumo"></dl>
+        <a class="botao botao-whats" id="r-link" href="https://wa.me/5512991885259" target="_blank" rel="noopener noreferrer">Enviar no WhatsApp</a>
+        <button class="pronta-voltar" type="button" id="r-editar">Voltar e editar</button>
       </div>
     </div>
   </dialog>

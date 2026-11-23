@@ -181,7 +181,7 @@
   function abrirReserva(origem) {
     if (!modal || typeof modal.showModal !== "function") { location.hash = "reservar"; return; }
     abriuDe = origem || null;
-    $("r-pronto").hidden = true; $("r-erro").hidden = true;
+    $("r-pronto").hidden = true; $("r-erro").hidden = true; $("form-reserva").hidden = false;
     if (menuTela && menuTela.open) menuTela.close();
     abrir(modal);
     var nome = $("r-nome"); if (nome) nome.focus();
@@ -207,6 +207,24 @@
   }
   var form = $("form-reserva"), erro = $("r-erro"), pronto = $("r-pronto"), resumo = $("r-resumo"), link = $("r-link");
   function limpar(texto, max) { return String(texto || "").replace(/[\u0000-\u001f]/g, " ").trim().slice(0, max); }
+  // Contador de pessoas
+  var campoPessoas = $("r-pessoas");
+  document.querySelectorAll(".contador-bt").forEach(function (bt) {
+    bt.addEventListener("click", function () {
+      var n = (parseInt(campoPessoas.value, 10) || 0) + parseInt(bt.getAttribute("data-passo"), 10);
+      campoPessoas.value = Math.max(1, Math.min(60, n));
+    });
+  });
+  // Reservando a partir de um show: já sugere o dia e o horário dele
+  function sugerirShow(s) {
+    if (!s) return;
+    if (campoData && !campoData.value) campoData.value = s.data;
+    var sel = $("r-hora");
+    if (sel && !sel.value && sel.querySelector('option[value="' + s.hora + '"]')) sel.value = s.hora;
+  }
+  $("banda-reservar") && $("banda-reservar").addEventListener("click", function () { sugerirShow(bandaAtual); });
+  $("palco-reservar") && $("palco-reservar").addEventListener("click", function () { sugerirShow(s0); });
+
   if (form) {
     form.addEventListener("submit", function (e) {
       e.preventDefault();
@@ -214,24 +232,30 @@
       var pessoas = parseInt(form.pessoas.value, 10), motivo = limpar(form.motivo.value, 80);
       var faltando = [];
       if (!nome) faltando.push("seu nome");
-      if (!/^\d{4}-\d{2}-\d{2}$/.test(data)) faltando.push("a data");
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(data)) faltando.push("o dia");
       if (!/^\d{2}:\d{2}$/.test(hora)) faltando.push("o horário");
       if (!(pessoas >= 1 && pessoas <= 60)) faltando.push("quantas pessoas (de 1 a 60)");
       if (faltando.length) {
         erro.textContent = "Falta preencher " + faltando.join(", ") + ".";
-        erro.hidden = false; pronto.hidden = true;
+        erro.hidden = false;
         return;
       }
       erro.hidden = true;
-      var p = data.split("-"), dataCompleta = p[2] + "/" + p[1] + "/" + p[0];
+      var p = data.split("-"), dt = new Date(+p[0], +p[1] - 1, +p[2]);
+      var dataCompleta = p[2] + "/" + p[1] + "/" + p[0];
       var msg = "Olá, Soul! Quero reservar uma mesa.\nNome: " + nome +
         "\nData: " + dataCompleta + " às " + horaBR(hora) +
         "\nPessoas: " + pessoas + (motivo ? "\nOcasião: " + motivo : "");
-      resumo.textContent = "Mesa para " + pessoas + (pessoas === 1 ? " pessoa" : " pessoas") + " em " + dataCompleta +
-        " às " + horaBR(hora) + ". Envie pelo WhatsApp para a casa confirmar.";
+      resumo.textContent = "";
+      [["Nome", nome], ["Dia", maiuscula(SEMANA[dt.getDay()]) + ", " + p[2] + "/" + p[1]], ["Horário", horaBR(hora)],
+       ["Pessoas", String(pessoas)], ["Ocasião", motivo]].forEach(function (l) {
+        if (!l[1]) return;
+        var linha = el("div"); linha.appendChild(el("dt", null, l[0])); linha.appendChild(el("dd", null, l[1])); resumo.appendChild(linha);
+      });
       link.href = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(msg);
-      pronto.hidden = false;
+      form.hidden = true; pronto.hidden = false;
       link.focus();
     });
+    $("r-editar").addEventListener("click", function () { pronto.hidden = true; form.hidden = false; $("r-nome").focus(); });
   }
 })();
