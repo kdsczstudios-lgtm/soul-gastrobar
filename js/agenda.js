@@ -5,7 +5,10 @@
 // O próximo show aparece no topo do site com a foto ou o vídeo da banda e o nome dela.
 // Shows com data passada somem sozinhos. A faixa da agenda mostra os 6 próximos.
 window.SOUL_AGENDA = [
-  { data: "2026-11-21", hora: "19:30", atracao: "Old Is Cool", estilo: "Rock", foto: "img/bandas/old-is-cool.jpg" }
+  { data: "2026-11-26", hora: "19:30", atracao: "Banda Outs", estilo: "Pop rock", foto: "img/bandas/outs.jpg" },
+  { data: "2026-11-27", hora: "19:30", atracao: "Lóssios", estilo: "Brasilidades", foto: "img/bandas/lossios.jpg" },
+  { data: "2026-11-28", hora: "13:30", atracao: "Luara e as Comadres", estilo: "Samba", foto: "img/bandas/luara-e-as-comadres.jpg" },
+  { data: "2026-11-28", hora: "19:30", atracao: "London", estilo: "Rock", foto: "img/bandas/london.jpg" }
 ];
 
 // Foto ou vídeo do topo quando não há show marcado (de preferência uma banda no palco do Soul).
