@@ -17,5 +17,6 @@ window.SOUL_GALERIA = [
   { quadro: 2, foto: "img/galeria/steak-tartare.jpg", legenda: "Steak tartare com Aperol Spritz, sobre o jogo americano do Soul" },
   { quadro: 3, foto: "img/galeria/torresmo.jpg", legenda: "Torresmo de rolo com gin tônica" },
   { quadro: 4, foto: "img/galeria/bolovo-chopp.jpg", legenda: "Bolovo de carne de panela com chopp na taça do Soul" },
-  { quadro: 5, foto: "img/galeria/entrada-aperol.jpg", legenda: "Entrada da casa com Aperol Spritz" }
+  { quadro: 5, foto: "img/galeria/entrada-aperol.jpg", legenda: "Entrada da casa com Aperol Spritz" },
+  { quadro: 6, foto: "img/galeria/aniversario.jpg", legenda: "Aniversário comemorado no Soul" }
 ];

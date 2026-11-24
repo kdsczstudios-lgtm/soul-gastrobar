@@ -133,6 +133,21 @@ body.modal-aberto { overflow: hidden; }
 .selo-grande { font: 700 clamp(1.8rem, 3.5vw, 2.4rem)/1 var(--f-titulo); text-transform: uppercase; letter-spacing: .06em; color: var(--cobre); }
 .selos li p:last-child { color: var(--fumaca); max-width: 26ch; }
 
+/* Happy Hour: foto do brinde e a oferta numa moldura */
+.happy { display: grid; grid-template-columns: 1fr; background: var(--carvao); border-block: 1px solid var(--linha); }
+@media (min-width: 900px) { .happy { grid-template-columns: 1.1fr 1fr; } }
+.happy-foto { overflow: hidden; min-height: 20rem; }
+.happy-foto img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; }
+.happy-texto { display: grid; align-content: center; justify-items: center; gap: 1.4rem; text-align: center; padding: clamp(3rem, 7vw, 5rem) var(--lateral); }
+.happy-quando { display: inline-block; padding: .5rem 1.1rem; border: 1px solid var(--cobre); font: 700 1rem/1 var(--f-titulo); letter-spacing: .18em; text-transform: uppercase; color: var(--cobre); }
+.happy h2 { display: grid; gap: .1rem; }
+.happy h2 .hh-1 { font: 800 clamp(3rem, 7vw, 4.8rem)/.9 var(--f-titulo); text-transform: uppercase; }
+.happy h2 .hh-2 { font: italic 400 clamp(2rem, 4.5vw, 3rem)/1 var(--f-frase); color: var(--cobre); }
+.ofertas { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; width: 100%; max-width: 30rem; grid-template-columns: 1fr 1fr; }
+.ofertas li { display: grid; gap: .4rem; align-content: start; padding: 1.3rem 1rem; border: 1px solid var(--linha); outline: 1px solid var(--linha); outline-offset: 4px; }
+.oferta-grande { font: 800 clamp(1.7rem, 4vw, 2.2rem)/.95 var(--f-titulo); text-transform: uppercase; }
+.ofertas li p:last-child { color: var(--fumaca); font-size: .9rem; }
+
 /* Metade texto, metade foto */
 .dividido { display: grid; grid-template-columns: 1fr; border-top: 1px solid var(--linha); }
 @media (min-width: 900px) { .dividido { grid-template-columns: 1fr 1fr; } }
@@ -148,7 +163,7 @@ body.modal-aberto { overflow: hidden; }
 /* Tabuleiro: foto e caixa com moldura dupla */
 .tabuleiro { display: grid; grid-template-columns: 1fr; }
 @media (min-width: 760px) { .tabuleiro { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 759px) { .tabuleiro .tab-foto:nth-of-type(3) { display: none; } }
+@media (max-width: 759px) { .tabuleiro .tab-foto:nth-of-type(2) { display: none; } }
 .tab-foto { overflow: hidden; aspect-ratio: 4 / 3; }
 .tab-foto img { width: 100%; height: 100%; object-fit: cover; }
 .tab-caixa { display: grid; place-items: center; padding: clamp(1.5rem, 5vw, 3.5rem); background: var(--noite); }
